@@ -3,7 +3,7 @@ import {View,Text,StyleSheet} from 'react-native';
 const Index=()=>{
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Loshani Ramsha</Text>
+            <Text style={styles.text}>Loshani</Text>
         </View>
     )
 }
