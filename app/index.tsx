@@ -1,5 +1,6 @@
 import {View,Text,StyleSheet} from 'react-native';
 import {Link} from "expo-router";
+import PoppinsText from "@/layout/PoppinsText";
 
 const Index=()=>{
 
@@ -9,6 +10,8 @@ const Index=()=>{
             <Link href="/home" style={styles.link}>
                 Go to Home
             </Link>
+            {/*<PoppinsText style={styles.text}>Poppins Font</PoppinsText>*/}
+            <PoppinsText style={{fontWeight:"700",color:"green"}}>Poppins Font</PoppinsText>
         </View>
     )
 }
