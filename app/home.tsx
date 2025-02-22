@@ -1,53 +1,100 @@
-import { View,StyleSheet, ScrollView } from "react-native";
-import { Link } from "expo-router";
+
+import { View, StyleSheet, ScrollView, Dimensions } from "react-native";
 import PoppinsText from "@/layout/PoppinsText";
+import AntDesign from "@expo/vector-icons/AntDesign";
+
+const { width: dWidth } = Dimensions.get("window");
 
 const Home = () => {
     return (
-        <ScrollView style={styles.scrollerContainer}
-                    showsVerticalScrollIndicator={false}>
-            <AccountCard/>
-
+        <ScrollView style={styles.scrollerContainer} showsVerticalScrollIndicator={false}>
+            {/* Account Card */}
+            <AccountCard />
+            {/* Service Section */}
+            <ServiceSection />
         </ScrollView>
-
     );
 };
 
 const styles = StyleSheet.create({
     scrollerContainer: {
-        height:"100%",
-        width:"100%",
+        height: "100%",
+        width: "100%",
         paddingTop: 20,
-
-
-    }
-
+    },
 });
 
 export default Home;
 
-
-const AccountCard=()=>{
-    return(
+/* Main Account Card */
+const AccountCard = () => {
+    return (
         <View style={style.cardContainer}>
             <PoppinsText style={style.textContainer}>Your Account</PoppinsText>
-            <PoppinsText style={{color:"black",fontWeight:"bold",textAlign:"center",fontSize:27,marginTop:30,}}>Rs.50,000.000</PoppinsText>
+            <PoppinsText style={{ color: "black", fontWeight: "bold", textAlign: "center", fontSize: 27, marginTop: 30 }}>
+                Rs.50,000.00
+            </PoppinsText>
         </View>
-    )
-}
+    );
+};
 
-const style=StyleSheet.create({
+/* Service Section */
+const ServiceSection = () => {
+    return (
+        <View style={style.serviceSection}>
+            <ServiceBlock name="mobile1" title="Reload" />
+            <ServiceBlock name="creditcard" title="Bill Pay" />
+            <ServiceBlock name="shoppingcart" title="Shopping" />
+            <ServiceBlock name={"bank"} title="Bank Deposite"/>
+        </View>
+    );
+};
+
+
+
+/* Service Block */
+// @ts-ignore
+const ServiceBlock = ({ name, title }) => {
+    return (
+        <View style={style.serviceBlock}>
+            <AntDesign style={{ marginTop: 10, marginBottom: 3 }} name={name} size={37} color="orange" />
+            <PoppinsText style={{ marginTop: 7 }}>{title}</PoppinsText>
+        </View>
+    );
+};
+
+/* Styles */
+const style = StyleSheet.create({
     textContainer: {
-        color:"black",
-        fontWeight:"bold",
+        color: "black",
+        fontWeight: "bold",
     },
     cardContainer: {
-        width:"100%",
-        height:147,
-        backgroundColor:"orange",
-        borderRadius:15,
-        boxShadow:"white",
-        paddingTop:15,
-    }
-})
+        width: "100%",
+        height: 147,
+        backgroundColor: "orange",
+        borderRadius: 15,
+        paddingTop: 15,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    serviceSection: {
+        width: "100%",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginTop: 17,
+        paddingHorizontal: 10,
+    },
+    serviceBlock: {
+        width: dWidth / 2 - 25,
+        height: 90,
+        backgroundColor: "#272727",
+        borderRadius: 7,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 5,
+    },
+});
 
