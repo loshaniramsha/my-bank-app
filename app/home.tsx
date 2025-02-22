@@ -1,5 +1,5 @@
 
-import { View, StyleSheet, ScrollView, Dimensions } from "react-native";
+import { View,TouchableOpacity, StyleSheet, ScrollView, Dimensions } from "react-native";
 import PoppinsText from "@/layout/PoppinsText";
 import AntDesign from "@expo/vector-icons/AntDesign";
 
@@ -56,10 +56,10 @@ const ServiceSection = () => {
 // @ts-ignore
 const ServiceBlock = ({ name, title }) => {
     return (
-        <View style={style.serviceBlock}>
+        <TouchableOpacity style={style.serviceBlock}>
             <AntDesign style={{ marginTop: 10, marginBottom: 3 }} name={name} size={37} color="orange" />
-            <PoppinsText style={{ marginTop: 7 }}>{title}</PoppinsText>
-        </View>
+            <PoppinsText style={{ marginTop: 7 ,color:"white"}}>{title}</PoppinsText>
+        </TouchableOpacity>
     );
 };
 
@@ -80,6 +80,7 @@ const style = StyleSheet.create({
     },
     serviceSection: {
         width: "100%",
+        color:"white",
         flexDirection: "row",
         flexWrap: "wrap",
         alignItems: "center",
