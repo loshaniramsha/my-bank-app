@@ -1,16 +1,15 @@
 import {View,Text,StyleSheet} from 'react-native';
 import {Link} from "expo-router";
-import PoppinsText from "@/layout/PoppinsText";
+import PoppinsText from "@/layout/poppins-text";
 
 const Index=()=>{
 
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Loshani Ramsha</Text>
-            <Link href="/home" style={styles.link}>
+            <Link href="/drower/home" style={styles.link}>
                 Go to Home
             </Link>
-            {/*<PoppinsText style={styles.text}>Poppins Font</PoppinsText>*/}
             <PoppinsText style={{fontWeight:"700",color:"green"}}>Poppins Font</PoppinsText>
         </View>
     )
