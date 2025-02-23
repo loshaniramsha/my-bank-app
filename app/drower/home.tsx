@@ -1,15 +1,19 @@
-
-import { View,TouchableOpacity, StyleSheet, ScrollView, Dimensions } from "react-native";
-import PoppinsText from "@/layout/PoppinsText";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import {Animated, Dimensions, StyleSheet, TouchableOpacity, View} from "react-native";
+import ScrollView = Animated.ScrollView;
+import DrawerLayout from "@/app/drower/_layout";
+import AccountDetails from "@/component/account-details";
+import {AntDesign} from "@expo/vector-icons";
+import PoppinsText from "@/layout/poppins-text";
 
 const { width: dWidth } = Dimensions.get("window");
 
 const Home = () => {
     return (
         <ScrollView style={styles.scrollerContainer} showsVerticalScrollIndicator={false}>
+            <DrawerLayout/>
             {/* Account Card */}
-            <AccountCard />
+            {/*<AccountCard />*/}
+            <AccountDetails/>
             {/* Service Section */}
             <ServiceSection />
         </ScrollView>
@@ -18,6 +22,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
     scrollerContainer: {
+        backgroundColor: "#101010",
         height: "100%",
         width: "100%",
         paddingTop: 20,
@@ -25,18 +30,6 @@ const styles = StyleSheet.create({
 });
 
 export default Home;
-
-/* Main Account Card */
-const AccountCard = () => {
-    return (
-        <View style={style.cardContainer}>
-            <PoppinsText style={style.textContainer}>Your Account</PoppinsText>
-            <PoppinsText style={{ color: "black", fontWeight: "bold", textAlign: "center", fontSize: 27, marginTop: 30 }}>
-                Rs.50,000.00
-            </PoppinsText>
-        </View>
-    );
-};
 
 /* Service Section */
 const ServiceSection = () => {
@@ -86,6 +79,7 @@ const style = StyleSheet.create({
         alignItems: "center",
         justifyContent: "space-between",
         marginTop: 17,
+        paddingTop:7,
         paddingHorizontal: 10,
     },
     serviceBlock: {
