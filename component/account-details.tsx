@@ -4,13 +4,16 @@ import PoppinsText from "@/layout/poppins-text";
 import {Entypo, EvilIcons, FontAwesome5} from "@expo/vector-icons";
 import {useNavigation} from "expo-router";
 
+interface INavigation{openDrawer:()=>void }
+
 const AccountDetails = () => {
-    const navigation=useNavigation();
+    const navigation:INavigation=useNavigation();
+
     return (
         <View style={styles.container}>
             {/* Greeting & Menu Icon */}
             <View style={styles.header}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={navigation.openDrawer}>
                     <Entypo name="menu" size={28} color="balck" style={styles.menuIcon} />
                 </TouchableOpacity>
 
