@@ -29,6 +29,14 @@ const MobileMenu = () => {
                 <MenuItem title="My Payees" icon="people" pressFunction={() => router.push("/")} />
                 <MenuItem title="Saved Billers" icon="file-symlink-file" pressFunction={() => router.push("/")} />
                 <MenuItem title="Bank Rate" icon="graph" pressFunction={() => router.push("/")} />
+                <MenuItem title="Location" icon="location" pressFunction={() => router.push("/")} />
+                <MenuItem title="Setting" icon="gear" pressFunction={() => router.push("/")} />
+                <MenuItem title="Contacts" icon="mail" pressFunction={() => router.push("/")} />
+                <MenuItem title="About Us" icon="code-of-conduct" pressFunction={() => router.push("/")} />
+                <MenuItem title="FAQ" icon="comment-discussion" pressFunction={() => router.push("/")} />
+                <MenuItem title="Terms & Condition" icon="light-bulb" pressFunction={() => router.push("/")} />
+                <MenuItem title="Privacy Policy" icon="shield-check" pressFunction={() => router.push("/")} />
+                <MenuItem title="Log Out" icon="sign-out" pressFunction={() => router.push("/")} />
 
                 {/* Add more MenuItems if needed */}
             </View>
