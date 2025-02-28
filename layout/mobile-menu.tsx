@@ -50,23 +50,25 @@ const MobileMenu = () => {
                 <PoppinsText style={styles.profileText}>Loshani Ramsha</PoppinsText>
             </View>
 
+
             {/* Menu Items */}
             <View style={styles.menuContainer}>
-                <MenuItem title="Home" icon="home" pressFunction={() => router.push("/")} />
-                <MenuItem title="Account Summary" icon="hourglass" pressFunction={() => router.push("/")} />
-                <MenuItem title="Fund Transfers" icon="arrow-switch" pressFunction={() => router.push("/")} />
-                <MenuItem title="Bill Payment" icon="checklist" pressFunction={() => router.push("/")} />
-                <MenuItem title="My Payees" icon="people" pressFunction={() => router.push("/")} />
+                <MenuItem title="AccountSummary" icon="hourglass" pressFunction={() => router.push("/drower/account-summary")} />
+                <MenuItem title="Fund Transfers" icon="arrow-switch" pressFunction={() => router.push("/drower/fund-transfers")} />
+                <MenuItem title="Bill Payment" icon="checklist" pressFunction={() => router.push("/drower/bill-payment")} />
+                <MenuItem title="My Payees" icon="people" pressFunction={() => router.push("/drower/my-payees")} />
                 <MenuItem title="Saved Billers" icon="file-symlink-file" pressFunction={() => router.push("/")} />
-                <MenuItem title="Bank Rate" icon="graph" pressFunction={() => router.push("/")} />
-                <MenuItem title="Location" icon="location" pressFunction={() => router.push("/")} />
-                <MenuItem title="Settings" icon="gear" pressFunction={() => router.push("/")} />
-                <MenuItem title="Contacts" icon="mail" pressFunction={() => router.push("/")} />
-                <MenuItem title="About Us" icon="code-of-conduct" pressFunction={() => router.push("/")} />
-                <MenuItem title="FAQ" icon="comment-discussion" pressFunction={() => router.push("/")} />
-                <MenuItem title="Terms & Conditions" icon="light-bulb" pressFunction={() => router.push("/")} />
-                <MenuItem title="Privacy Policy" icon="shield-check" pressFunction={() => router.push("/")} />
+                <MenuItem title="Settings" icon="gear" pressFunction={() => router.push("/drower/setting")} />
+                <MenuItem title="About Us" icon="code-of-conduct" pressFunction={() => router.push("/drower/about-us")} />
                 <MenuItem title="Log Out" icon="sign-out" pressFunction={() => router.push("/")} />
+            </View>
+            {/*menu footer*/}
+            <View style={{width:"100%",marginTop:5,borderTopColor:"gray",flexDirection:"row",justifyContent:"space-between"}}>
+                <View/>
+                <View style={styles.menuFooter}>
+                    <PoppinsText style={styles.versionText}>v 2.3.9</PoppinsText>
+                </View>
+
             </View>
         </AnimatedScrollView>
     );
@@ -128,8 +130,14 @@ const styles = StyleSheet.create({
     },
     profileText: {
         color: "white",
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+    contactText: {
+        color: "white",
         fontSize: 14,
-        fontWeight: "600",
+        fontWeight: "500",
+        marginTop: 2, // Adds spacing below the name
     },
     menuContainer: {
         marginTop: 20,
@@ -154,148 +162,21 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: "500",
     },
-});
-
-
-
-
-/*
-import { View, Animated, TouchableOpacity, StyleSheet, ScrollView,Image } from "react-native";
-import {Ionicons, Octicons} from "@expo/vector-icons";
-import { themeColors } from "@/layout/theme/color";
-import PoppinsText from "@/layout/poppins-text";
-import { useRouter } from "expo-router";
-import React from "react";
-
-const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
-
-const MobileMenu = () => {
-    const router = useRouter();
-
-    return (
-        <AnimatedScrollView
-            showsVerticalScrollIndicator={false}
-            style={styles.container}
-        >
-            {/!* Profile Information *!/}
-            <View style={styles.profileContainer}>
-                {/!* Add profile details here *!/}
-                <Image
-                    style={styles.profileImage}
-                    source={{ uri: 'https://s3.amazonaws.com/rcp-prod-uploads/images/ddec8e4e126b2ec132ee54bacf8a0da79abe293auI.png' }}
-                />
-                <TouchableOpacity style={styles.cameraIcon} onPress={onChangeProfile}>
-                    <Ionicons name="camera-reverse-outline" size={20} color="white" />
-                </TouchableOpacity>
-                <PoppinsText style={styles.profileText}>
-                    Loshani Ramsha
-                </PoppinsText>
-            </View>
-
-
-            {/!* Menu Items *!/}
-            <View style={styles.menuContainer}>
-                <MenuItem title="Home" icon="home" pressFunction={() => router.push("/")}/>
-                <MenuItem title="Account Summery" icon="hourglass" pressFunction={() => router.push("/")} />
-                <MenuItem title="Fund Transfers" icon="arrow-switch" pressFunction={() => router.push("/")} />
-                <MenuItem title="Bill Payment" icon="checklist" pressFunction={() => router.push("/")} />
-                <MenuItem title="My Payees" icon="people" pressFunction={() => router.push("/")} />
-                <MenuItem title="Saved Billers" icon="file-symlink-file" pressFunction={() => router.push("/")} />
-                <MenuItem title="Bank Rate" icon="graph" pressFunction={() => router.push("/")} />
-                <MenuItem title="Location" icon="location" pressFunction={() => router.push("/")} />
-                <MenuItem title="Setting" icon="gear" pressFunction={() => router.push("/")} />
-                <MenuItem title="Contacts" icon="mail" pressFunction={() => router.push("/")} />
-                <MenuItem title="About Us" icon="code-of-conduct" pressFunction={() => router.push("/")} />
-                <MenuItem title="FAQ" icon="comment-discussion" pressFunction={() => router.push("/")} />
-                <MenuItem title="Terms & Condition" icon="light-bulb" pressFunction={() => router.push("/")} />
-                <MenuItem title="Privacy Policy" icon="shield-check" pressFunction={() => router.push("/")} />
-                <MenuItem title="Log Out" icon="sign-out" pressFunction={() => router.push("/")} />
-
-                {/!* Add more MenuItems if needed *!/}
-            </View>
-        </AnimatedScrollView>
-    );
-};
-
-
-export default MobileMenu;
-
-/!* Define Menu Item Interface *!/
-interface IMenuItem {
-    title: string;
-    pressFunction: () => void;
-    icon: React.ComponentProps<typeof Octicons>["name"];
-}
-
-/!* Define Menu Item Component *!/
-const MenuItem: React.FC<IMenuItem> = ({ title, icon, pressFunction }) => {
-    return (
-        <TouchableOpacity onPress={pressFunction} style={styles.menuItem}>
-            <View style={styles.menuItemContent}>
-                <Octicons name={icon} size={20} color={themeColors.icon} />
-                <PoppinsText style={styles.menuText}>{title}</PoppinsText>
-            </View>
-            <Octicons name="chevron-right" size={20} color={themeColors.icon} />
-        </TouchableOpacity>
-    );
-};
-
-/!* Styles *!/
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#101010",
-        paddingVertical: 20,
-    },
-    profileContainer: {
-        padding: 20,
+    /*menu footer*/
+    menuFooter: {
+        width: "100%",
+        marginTop: 10,
+        paddingVertical: 10,
+        borderTopWidth: 1,
+        borderTopColor: "#272727",
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
     },
-    profileImage: {
-        width: 75,
-        height: 75,
-        borderRadius: 38.5, // Makes it circular
-        borderWidth: 2,
-        borderColor: "orange", // Optional: adds an orange border
+    versionText: {
+        fontSize: 10,
+        color: "#e8dede",
+        textAlign: "center",
     },
-    cameraIcon: {
-        position: "absolute",
-        bottom: 0,
-        right: 0,
-        backgroundColor: "black", // Background for visibility
-        borderRadius: 15, // Circular icon background
-        padding: 5,
-    },
-    profileText: {
-        color: "white",
-        marginLeft:6,
-        fontSize: 12, // Adjust font size for better visibility
-        fontWeight: "600", // Makes text slightly bold
-    },
-    menuContainer: {
-        marginTop: 20,
-        marginBottom: 10,
-        paddingHorizontal: 20,
-    },
-    menuItem: {
-        flexDirection: "row",
-        alignItems: "center",
-        paddingVertical: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: "#272727",
-    },
-    menuItemContent: {
-        flexDirection: "row",
-        alignItems: "center",
-        flex: 1, // Ensures the text and icon are spaced properly
-    },
-    menuText: {
-        marginLeft: 10,
-        color: "white",
-        fontSize: 16,
-        fontWeight: "500",
-    },
+
 });
-*/

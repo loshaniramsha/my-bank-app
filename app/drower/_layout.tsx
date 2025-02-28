@@ -2,15 +2,12 @@
 import {Drawer} from "expo-router/drawer"
 import {Animated} from "react-native";
 import ScrollView = Animated.ScrollView;
+import MobileMenu from "@/layout/mobile-menu";
 
 const DrawerLayout=()=>{
     return <Drawer drawerContent={MobileMenu} screenOptions={{headerShown:false,drawerStyle:{
-        width:100,
+        width:240,
         }
     }}/>;
 };
 export default DrawerLayout;
-
-const MobileMenu=()=>{
-    return <ScrollView style={{width:"100%",flex:1,backgroundColor:"red"}}></ScrollView>
-}
